@@ -1,5 +1,6 @@
 const express = require("express");
 const hbs = require('express-handlebars');
+const { connect } = require("http2");
 const path = require("path");
 const app = express();
 
@@ -8,6 +9,9 @@ app.use(express.json());
 
 // serving static files
 app.use(express.static(path.join(__dirname, "public")));
+
+// database connection
+require('./server/database/database')();
 
 // view engine
 app.set('view engine', 'hbs');
