@@ -20,11 +20,34 @@ exports.uploads = (req, res, next) => {
     return encodeImg = img.toString('base64')
   })
 
-  imgArray.map((src, index) => {
+  let result = imgArray.map((src, index) => {
     // object to store
     let finalImg = {
-      filename: files
+      filename: files[index].originalname,
+      contentType: files[index].mimetype,
+      imageBase: src
     }
+    let newUpload = new UploadModel(finalImg);
+    return newUpload
+      .save().then(() => {
+        return { msg: `${files[index].originalname} Image uploaded!` }
+      })
+      .catch(error => {
+        if (error) {
+          if (error.name == "MongoError" && error.code === 11000) {
+            return Promise.reject({
+              error: "Duplicate " `${files[index].originalname}.File Already exist`
+            })
+          }
+          return Promise.reject({ error: error.message || `Cannot upload ${files[index].originalname} Somethings wrong` })
+        }
+      })
   });
-  res.json(files);
+  Promise.all(result)
+    .then(msg => [
+      res.json(msg)
+    ])
+    .catch(err => {
+      res.json(err)
+    })
 };
