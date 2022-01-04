@@ -22,21 +22,26 @@
     {{!-- Display Images --}}
     <section class="mt-5">
       <div class="row">
-        <div class="row-3">
-          <div class="card shadow" style="width: 18rem;">
-            <img src="..." class="card-img-top" class="img-fluid" alt="...">
-            <div class="card-body">
-              <h5 class="card-title font-poppins">UI/UX design</h5>
-              <p class="text-secondary font-size-09">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-info font-size-09 text-light">Read more</a>
-            </div>
-          </div>
-        </div>
+          {{#each images}}
+            {{#each this}}
+              {{#if imageBase}}
+                {{!-- Generate Card --}}
+                <div class="col-3">
+                  <div class="card shadow" style="width: 18rem;">
+                    <img src='data:{{contentType}};base64,{{imageBase}}' class="card-img-top" class="img-fluid" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title font-poppins">UI/UX design</h5>
+                      <p class="text-secondary font-size-09">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-info font-size-09 text-light">Read more</a>
+                    </div>
+                  </div>
+                </div>
+                {{!-- Generate Card --}}
+              {{/if}}
+            {{/each}}
+          {{/each}}
       </div>
     </section>
-
-    {{!-- /Display Images --}}
-
   </div>
 </section>
 {{!-- /Section --}}
