@@ -1,47 +1,51 @@
 {{!-- Section --}}
-<section class="section my-4">
-  <div class="container text-center">
-    <div class="title py-5">
-      <h1>Image Center</h1>
-      <p class="subtitle">Upload images to <strong>Server</strong></p>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <form action="/uploadmultiple" enctype="multipart/form-data" method="POST">
-          <div class="row">
-            <div class="col-8">
-              <input class="form-control" type="file" name="images" id="formFile" multiple>
-            </div>
-            <div class="col-2">
-              <input type="submit" class="btn btn-warning" value="Upload Images">
-            </div>
+<section class="body-section my-2 mx-5">
+  <section class="section my-4 ">
+    <div class="container text-center">
+      <div class="card bg-warning bg-gradient pb-4 col-12">
+        <div class="title py-5 ">
+          <h1 class="display-2 color-primary mb-5">Upload your Cute images</h1>
+          <kbd class="subtitle px-3 py-3">Upload images to <strong>Server ❤️</strong></kbd>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-4">
+            <form action="/uploadmultiple" enctype="multipart/form-data" method="POST">
+              <div class="row">
+                <div class="col-8">
+                  <input class="form-control" type="file" name="images" id="formFile" multiple>
+                </div>
+                <div class="col-2">
+                  <input type="submit" class="btn btn-danger" value="Upload Images">
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
-    {{!-- Display Images --}}
-    <section class="mt-5">
-      <div class="row">
-          {{#each images}}
-            {{#each this}}
-              {{#if imageBase}}
-                {{!-- Generate Card --}}
-                <div class="col-3">
-                  <div class="card shadow" style="width: 18rem;">
-                    <img src='data:{{contentType}};base64,{{imageBase}}' class="card-img-top" class="img-fluid" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title font-poppins">UI/UX design</h5>
-                      <p class="text-secondary font-size-09">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-info font-size-09 text-light">Read more</a>
+      {{!-- Display Images --}}
+      <section class="mt-5 bodycontainer">
+        <div class="row">
+            {{#each images}}
+              {{#each this}}
+                {{#if imageBase}}
+                  {{!-- Generate Card --}}
+                  <div class="col-3">
+                    <div class="card shadow" style="width: 18rem;">
+                      <img src='data:{{contentType}};base64,{{imageBase}}' class="card-img-top" class="img-fluid" alt="Cute-Image" style="height: 180px;object-fit:contain">
+                      <div class="card-body">
+                        <h5 class="card-title font-poppins">{{filename}}</h5>
+                        <p class="text-secondary font-size-09">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-info font-size-09 text-light">Read more</a>
+                      </div>
                     </div>
                   </div>
-                </div>
-                {{!-- Generate Card --}}
-              {{/if}}
+                  {{!-- Generate Card --}}
+                {{/if}}
+              {{/each}}
             {{/each}}
-          {{/each}}
-      </div>
-    </section>
-  </div>
+        </div>
+      </section>
+    </div>
+  </section>
 </section>
 {{!-- /Section --}}
