@@ -1,6 +1,8 @@
 # The Wholesome App
  A project that allows you to upload images directly to MongoDB Atlas into your collection, a faster cloud database.
  
+ Deployed at : https://the-wholesome-app.herokuapp.com/
+ 
  1. To begin with, you need to clone the repository.
  2. Open the repository in a code editor like VSCode, Atom, etc.
  3. Create a file as `config.js` in the home directory where `server.js is present`.
