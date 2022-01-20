@@ -2,7 +2,10 @@ const express = require("express");
 const hbs = require('express-handlebars');
 const { connect } = require("http2");
 const path = require("path");
+const dotenv = require('dotenv');
 const app = express();
+
+dotenv.config({ path: '.env' })
 
 // const server = app.createServer();
 app.use(express.json());
@@ -25,6 +28,6 @@ app.engine('hbs', hbs.engine({
 // Calling routes
 app.use('/', require('./server/router/router'));
 
-app.listen(3000, () => {
-  console.log("Server started!");
+app.listen(process.env.PORT, () => {
+  console.log(`Server listening at ${process.env.PORT}`);
 });
